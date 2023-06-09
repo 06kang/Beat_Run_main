@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Move : MonoBehaviour
 {
     public float speed, jumpPower;
@@ -123,7 +123,7 @@ public class Move : MonoBehaviour
     private void playerrRebirth()
     {
         transform.position = new Vector2(-3.89f, -1.24f);
-        gameObject.SetActive(true);
+        RestartScenesButton();
     }
     void playerTakeDamage(int damage)
     {
@@ -134,5 +134,8 @@ public class Move : MonoBehaviour
             Invoke("playerrRebirth", 3);
         }
     }
-
+    public void RestartScenesButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
