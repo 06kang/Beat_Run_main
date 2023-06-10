@@ -94,8 +94,12 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);    //มกวม
-
         }
+        else if (Input.GetKeyUp(KeyCode.Space) && rigid.velocity.y > 0)
+        {
+            rigid.velocity =rigid.velocity * 0.4f;
+        }
+
     }
     private void OnTriggerStay2D(Collider2D coll)
     {
