@@ -43,7 +43,12 @@ public class FadeOutAnim : MonoBehaviour
         }
         GameManager.instance.pause = false;
         if (GameManager.instance.isPlay) GameManager.instance.audioT.Play();
-        if (GameManager.instance.isMove) GameManager.instance.obMove.MoveOB();
+        if (GameManager.instance.isMove)
+        {
+            GameManager.instance.obMove.MoveOB();
+            Debug.Log("오브젝트 이동중");
+
+        }
     }
 
 

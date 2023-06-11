@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ObjectMove : MonoBehaviour
 {
+    public Vector2 target;
+    public float smoothTime = 10f;
+    public float xVelocity = 2f;
+    public float yVelocity = 2f;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
-    Vector2 target = new Vector2(7.76f, -8.365f);
+    
     public void MoveOB()
     {
-        Vector2 velo = Vector2.zero;
-        transform.position = Vector2.SmoothDamp(transform.position, target, ref velo, 0.1f);
+        float newPositionX = Mathf.SmoothDamp(transform.position.x, target.x ,ref xVelocity ,smoothTime);
+        float newPositionY = Mathf.SmoothDamp(transform.position.y, target.y, ref yVelocity, smoothTime);
+        transform.position = new Vector2(newPositionX,newPositionY);
     }
 }

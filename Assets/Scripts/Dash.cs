@@ -52,7 +52,7 @@ public class Dash : MonoBehaviour
             {
                 vec = Vector2.down;
             }
-            player.Translate(vec * 5 * Time.deltaTime);
+            player.Translate(vec * 7 * Time.deltaTime);
         }
     }
 }
