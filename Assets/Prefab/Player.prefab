@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7508428755781611478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.079, y: -1.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.92677045, y: 0.6433679, z: 0.6881}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7508428756015081859}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpPower: 15
+  jumpPower: 17
   playerLife: 1
   player: {fileID: 7508428755781611478}
 --- !u!1 &7508428756015081858
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7508428756015081859}
-  - component: {fileID: 7508428756015081856}
+  - component: {fileID: 699892505}
   m_Layer: 6
   m_Name: isGround
   m_TagString: Untagged
@@ -173,8 +173,8 @@ Transform:
   m_Father: {fileID: 7508428755781611474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7508428756015081856
-CircleCollider2D:
+--- !u!61 &699892505
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -186,6 +186,16 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.7}
+  m_Offset: {x: 0, y: -0.55}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.85, y: 1}
+  m_EdgeRadius: 0

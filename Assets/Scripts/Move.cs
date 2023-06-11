@@ -26,7 +26,9 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isDash)
+        if (GameManager.instance.pause) return;
+
+        if (!isDash)
         {
             move();
             jump();
@@ -97,7 +99,12 @@ public class Move : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Space) && rigid.velocity.y > 0)
         {
-            rigid.velocity =rigid.velocity * 0.4f;
+            //rigid.velocity =rigid.velocity * 0.2f;
+            
+            float y = rigid.velocity.y*0.5f;
+            rigid.velocity = new Vector2(rigid.velocity.x, 0);
+            rigid.AddForce(Vector2.up * y, ForceMode2D.Impulse);
+            
         }
 
     }
