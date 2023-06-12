@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool pause, isPlay,isMove;
+    public bool pause, isPlay;
 
     public FadeOutAnim firstFade;
 
@@ -24,9 +24,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            firstFade.enabled = true;
+            firstFade.ActiveFade();
             isPlay = true;
-            isMove = true;
+            
         }
+        if(isPlay && !firstFade.isFade)
+        {
+            pause = false;
+            audioT.Play();
+        }
+ 
     }
 }

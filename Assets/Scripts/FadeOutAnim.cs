@@ -7,9 +7,10 @@ public class FadeOutAnim : MonoBehaviour
     public float fadeSpeed = 1.5f;
     public bool fadeInOnStart = false;
     public bool fadeOutOnExit = false;
-
+    public bool isFade;
     private CanvasGroup canvasGroup;
-
+    public enum FadeKind { FadeIn, FadeOut};
+    public FadeKind fade;
 
     void Update()
     {
@@ -19,10 +20,7 @@ public class FadeOutAnim : MonoBehaviour
     }
     private void Start()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1f;
-        StartCoroutine(FadeOut());
-
+        
     }
 
     IEnumerator FadeIn()
@@ -32,6 +30,8 @@ public class FadeOutAnim : MonoBehaviour
             canvasGroup.alpha += Time.deltaTime * fadeSpeed;
             yield return null;
         }
+        isFade = false;
+        gameObject.SetActive(false);
     }
 
     IEnumerator FadeOut()
@@ -41,15 +41,30 @@ public class FadeOutAnim : MonoBehaviour
             canvasGroup.alpha -= Time.deltaTime * fadeSpeed;
             yield return null;
         }
-        GameManager.instance.pause = false;
-        if (GameManager.instance.isPlay) GameManager.instance.audioT.Play();
-        if (GameManager.instance.isMove)
-        {
-            GameManager.instance.obMove.MoveOB();
-            Debug.Log("오브젝트 이동중");
-
-        }
+        
+        isFade = false;
+        gameObject.SetActive(false);
     }
 
+
+    public void ActiveFade()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (fade == FadeKind.FadeIn)
+        {
+            gameObject.SetActive(true);
+            canvasGroup.alpha = 0f;
+            StartCoroutine(FadeIn());
+            
+        }
+        else
+        {
+            enabled = true;
+            canvasGroup.alpha = 1f;
+            StartCoroutine(FadeOut());
+            
+        }
+        isFade = true;
+    }
 
 }

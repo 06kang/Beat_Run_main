@@ -4,21 +4,46 @@ using UnityEngine;
 
 public class ObjectMove : MonoBehaviour
 {
-    public Vector2 target;
-    public float smoothTime = 10f;
-    public float xVelocity = 2f;
-    public float yVelocity = 2f;
-
+    public Vector2 startPos;
+    public Vector2 endPos;
+    public float lerpTime = 0.5f;
+    public float currentTime = 0;
+    public float delayTime;
+    bool pause, first;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = this.transform.position;
+        pause = true;
     }
     
-    public void MoveOB()
+    public void Update()
     {
-        float newPositionX = Mathf.SmoothDamp(transform.position.x, target.x ,ref xVelocity ,smoothTime);
-        float newPositionY = Mathf.SmoothDamp(transform.position.y, target.y, ref yVelocity, smoothTime);
-        transform.position = new Vector2(newPositionX,newPositionY);
+        if (GameManager.instance.pause) return;
+        else if(!first)
+        {
+            first = true;
+            Invoke("Off_Pause", delayTime);
+        }
+
+        if (!pause)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= lerpTime)
+            {
+                currentTime = lerpTime;
+            }
+            float t = currentTime / lerpTime;
+            t = Mathf.Sin(t * Mathf.PI * 0.5f);
+            this.transform.position = Vector2.Lerp(startPos, endPos, t);
+        }
+        
+
+    }
+
+    void Off_Pause()
+    {
+        pause = false;
     }
 }
