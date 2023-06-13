@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ObjectMove : MonoBehaviour
 {
-    public Vector2 startPos;
-    public Vector2 endPos;
+    public Vector3 startPos;
+    public Vector3 endPos;
     public float lerpTime = 0.5f;
     public float currentTime = 0;
     public float delayTime;
     bool pause, first;
-
+    public bool positionFix; 
     // Start is called before the first frame update
     void Start()
     {
-        startPos = this.transform.position;
+        if(positionFix)  startPos = this.transform.position;
         pause = true;
     }
     
@@ -36,7 +36,12 @@ public class ObjectMove : MonoBehaviour
             }
             float t = currentTime / lerpTime;
             t = Mathf.Sin(t * Mathf.PI * 0.5f);
-            this.transform.position = Vector2.Lerp(startPos, endPos, t);
+            this.transform.position = Vector3.Lerp(startPos, endPos, t);
+            if(Vector3.Distance(transform.position, endPos) < 0.1f)
+            {
+                transform.position = endPos;
+                pause = true;
+            }
         }
         
 

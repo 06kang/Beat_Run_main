@@ -6,13 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool pause, isPlay;
+    public bool pause, isPlay, SoundPlay;
 
     public FadeOutAnim firstFade;
 
     public AudioT audioT;
 
     public ObjectMove obMove;
+
     void Awake()
     {
         instance = this;
@@ -22,16 +23,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && !isPlay)
         {
             firstFade.ActiveFade();
             isPlay = true;
-            
+            SoundPlay = true;
         }
-        if(isPlay && !firstFade.isFade)
+        if(SoundPlay && !firstFade.isFade)
         {
             pause = false;
             audioT.Play();
+            SoundPlay = false;
         }
  
     }

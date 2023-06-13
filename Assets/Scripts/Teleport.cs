@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+
     public Teleport tp;
     public Transform teleportPoint;
 

@@ -31,7 +31,7 @@ public class FadeOutAnim : MonoBehaviour
             yield return null;
         }
         isFade = false;
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     IEnumerator FadeOut()
