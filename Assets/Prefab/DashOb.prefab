@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1288868989025469894}
   - component: {fileID: 5158196129721636524}
   m_Layer: 0
-  m_Name: "\uD2B9\uC218 \uC624\uBE0C\uC81D\uD2B8-\uB300\uC26C\uACF5\uC810 \uC218\uC815\uBCF8"
+  m_Name: DashOb
   m_TagString: Dash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
