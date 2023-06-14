@@ -7,6 +7,7 @@ public class Move : MonoBehaviour
     public float speed, jumpPower;
     Rigidbody2D rigid;
     SpriteRenderer mySprite;
+    Animator anim;
     Teleport tp;
     Dash dash;
     bool isGround, isDash;  //¶¥¿¡ ´ê¾Ò´Â°¡.
@@ -21,6 +22,7 @@ public class Move : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         mySprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,9 +35,9 @@ public class Move : MonoBehaviour
             move();
             jump();
         }
-        
 
-        int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
+
+        int layerMask = 1 << LayerMask.NameToLayer("Obj");
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 1f, Vector2.zero, 0, layerMask);
         if (hit)
         {
@@ -89,7 +91,13 @@ public class Move : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         Vector2 dir = new Vector2(h * speed, rigid.velocity.y);
         rigid.velocity = dir;   //ÇÃ·¹ÀÌ¾î ÁÂ¿ì ÀÌµ¿ 
-
+        if (Mathf.Abs(h) >= 0.1f)
+        {
+            if (h < -0.1f) mySprite.flipX = true;
+            else if(h>0.1f)mySprite.flipX = false;
+            anim.SetBool("isMove", true);
+        }
+        else anim.SetBool("isMove", false);
     }
     void jump()
     {

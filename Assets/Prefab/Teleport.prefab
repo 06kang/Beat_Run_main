@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5984469018778523284}
   - component: {fileID: 5984469018778523287}
   - component: {fileID: 5984469018778523274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tel(1)
   m_TagString: Teleport
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5984469020112845641}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Teleport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 5984469020348741334}
   - component: {fileID: 5984469020348741329}
   - component: {fileID: 5984469020348741332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tel
   m_TagString: Teleport
   m_Icon: {fileID: 0}
